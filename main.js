@@ -1,6 +1,10 @@
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
+const SerialPort = require('serialport')
+const port = new SerialPort('COM3', {
+    baudRate: 9200
+})
 
 // SET ENV
 process.env.NODE_ENV = 'development';
@@ -61,7 +65,14 @@ app.on('ready', function () {
 });
 
 ipcMain.on('lightChannel', function (event, light) {
-    console.log(light.lightState);
+    console.log(`Light state is: ${light.lightState}`);
+
+    if (light.lightState) {
+        port.write('ON' + '\n');
+    } else {
+        port.write('OFF' + '\n');
+    }
+    
  
 
 })

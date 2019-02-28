@@ -22,7 +22,8 @@
         <button id="mainBtn" role="button"><a href="lightsWindow.html">Lights</a></button>
         <button id="mainBtn" role="button"><a href="protectionWindow.html">Protection</a></button>
 
-        <button id="lightBtn" role="button">Light</button>
+        <button id="lightBtnOn" role="button">Light On</button>
+        <button id="lightBtnOff" role="button">Light Off</button>
         <div class="bg"></div>
 
 
@@ -50,11 +51,15 @@
             }
         }
 
-        document.getElementById("lightBtn").addEventListener("click", function () {
-            console.log("Requesting LED OFF");
+        document.getElementById("lightBtnOn").addEventListener("click", function () {
+            console.log("Requesting LED ON");
             require('electron').ipcRenderer.send('lightChannel', {lightState:1});
 
-            // require('electron').ipcRenderer.send('sendLEDState', {LightLED: false});
+        });
+
+        document.getElementById("lightBtnOff").addEventListener("click", function () {
+            console.log("Requesting LED OFF");
+            require('electron').ipcRenderer.send('lightChannel', { lightState: 0 });
 
         });
 
