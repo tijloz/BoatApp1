@@ -5,19 +5,27 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "prepack": "build --dir",
+    "dist": "build --linux snap --arm64",
     "install": "electron-rebuild"
   },
   "author": "Laurence Homer",
   "license": "MIT",
   "dependencies": {
+    "@angular/animations": "^7.2.3",
+    "@angular/cdk": "^7.3.0",
+    "@angular/material": "^7.3.0",
     "all-the-package-names": "^1.3629.0",
     "bootstrap": "^4.2.1",
-    "electron": "^4.0.2",
     "jquery": "^1.9.1",
     "popper.js": "^1.14.6",
+    "serial": "0.0.9",
     "serialport": "^7.1.4"
   },
   "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "electron": "^4.0.5",
+    "electron-builder": "^20.38.5",
     "electron-rebuild": "^1.8.2"
   }
 }

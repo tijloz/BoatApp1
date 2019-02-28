@@ -5,27 +5,23 @@ const SerialPort = require('serialport')
 const port = new SerialPort('COM3', {
     baudRate: 9200
 })
-
-// SET ENV
-process.env.NODE_ENV = 'development';
-
 const { app, BrowserWindow, ipcMain } = electron;
 
-// Set environment
+// SET ENV
 process.env.NODE_ENV = 'production';
-
-let protectionWindow;
-let lightsWindow;
 
 // Listen for app to be ready
 app.on('ready', function () {
+
+
+
     
     /*      Create the main window      */
     let mainWindow = new BrowserWindow({
         show: false,
         frame: false,
-        //kiosk: true,
-        //alwaysOnTop: true       
+        kiosk: true,
+        alwaysOnTop: true       
     });
 
     mainWindow.webContents.openDevTools()
@@ -33,7 +29,7 @@ app.on('ready', function () {
     // Stop visual flash
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
-    })
+    }) 
     // Load html in window
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'mainWindow.html'),

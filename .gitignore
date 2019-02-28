@@ -9,6 +9,8 @@
 
 # KDE directory preferences
 .directory
+dist
+out
 
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
@@ -18,7 +20,6 @@
 
 node_modules
 .idea
-
 
 ### macOS ###
 # General
