@@ -20,11 +20,11 @@ app.on('ready', function () {
     let mainWindow = new BrowserWindow({
         show: false,
         frame: false,
-        kiosk: true,
-        alwaysOnTop: true       
+        //kiosk: true,
+        //alwaysOnTop: true       
     });
 
-    mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
 
     // Stop visual flash
     mainWindow.once('ready-to-show', () => {
@@ -45,8 +45,8 @@ app.on('ready', function () {
     let lightsWindow = new BrowserWindow({
         show: false,
         frame: false,
-        kiosk: true,
-        alwaysOnTop: true
+        //kiosk: true,
+        //alwaysOnTop: true
     });
 
     // Stop visual flash
