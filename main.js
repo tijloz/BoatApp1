@@ -17,7 +17,7 @@ function osSwap() {
             return 'com3';
             break;
         case 'linux':
-            return '/dev/tty-usbserial1';
+            return '/dev/ttyS0';
     }
 }
 
