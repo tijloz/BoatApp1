@@ -5,7 +5,7 @@ const SerialPort = require('serialport')
 const { app, BrowserWindow, ipcMain } = electron;
 const os = require('os');
 const osPlatform = os.platform();
-const spi = require('spi-device');
+const spi = require('/dev/spidev0.0');
 
 const port = new SerialPort(osSwap(), {
     baudRate: 9200
