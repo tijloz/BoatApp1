@@ -2,13 +2,38 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 const SerialPort = require('serialport')
-const port = new SerialPort('COM3', {
+const { app, BrowserWindow, ipcMain } = electron;
+const os = require('os');
+const osPlatform = os.platform();
+
+const port = new SerialPort(osSwap(), {
     baudRate: 9200
 })
-const { app, BrowserWindow, ipcMain } = electron;
+
+
+function osSwap() {
+    switch (osPlatform) {
+        case 'win32':
+            return 'com3';
+            break;
+        case 'linux':
+            return '/dev/tty-usbserial1';
+    }
+}
+
+// function osSwap(){
+//     if (osPlatform === 'win32') {
+//         return 'com3';
+//     } else if (osPlatform === 'linux') {
+//         return '/dev/tty-usbserial1';
+//     }
+// }
+
 
 // SET ENV
 process.env.NODE_ENV = 'production';
+
+
 
 // Listen for app to be ready
 app.on('ready', function () {
@@ -26,7 +51,7 @@ app.on('ready', function () {
 
     //mainWindow.webContents.openDevTools()
 
-    // Stop visual flash
+    // Stop visual flagit add sh
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
     }) 
