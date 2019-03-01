@@ -5,7 +5,7 @@ const SerialPort = require('serialport')
 const { app, BrowserWindow, ipcMain } = electron;
 const os = require('os');
 const osPlatform = os.platform();
-const spi = require('/dev/spidev0.0');
+const spi = require('spi-device');
 
 const port = new SerialPort(osSwap(), {
     baudRate: 9200
@@ -35,9 +35,8 @@ const Nucleo = spi.open(0, 0, (err) => {
     if (err) throw err;
 
     Nucleo.transfer(message, (err, message) => {
-        if (err) throw err;
 
-        // Convert raw value from sensor to celcius and log to console
+        // Raw value log to console
         const rawValue = ((message[0].receiveBuffer[1] & 0x03) << 8) +
             message[0].receiveBuffer[2];
         const voltage = rawValue
