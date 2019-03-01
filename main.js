@@ -17,7 +17,7 @@ function osSwap() {
             return 'com3';
             break;
         case 'linux':
-            return '/dev/ttyS0';
+            return '/dev/ttyACM0';
     }
 }
 
